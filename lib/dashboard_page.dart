@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
 // Dashboard Page (no bottom nav here!)
 class DashboardPage extends StatelessWidget {

@@ -38,7 +38,7 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Row(
           children: [
-            const Icon(Icons.grid_view, color: Colors.green),
+            Image.asset("assets/icon.png", height: 32),
             const SizedBox(width: 8),
             const Text("Gridly", style: TextStyle(fontWeight: FontWeight.bold)),
             const Spacer(),
@@ -56,9 +56,27 @@ class _HomePageState extends State<HomePage> {
                 await FirebaseAuth.instance.signOut();
                 setState(() {}); // refresh UI after logout
               },
-              child: const Text(
-                "Logout",
-                style: TextStyle(color: Colors.white),
+              child: Container(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 12,
+                  vertical: 8,
+                ), // padding inside the border
+                decoration: BoxDecoration(
+                  border: Border.fromBorderSide(
+                    BorderSide(
+                      color: Colors.black, // border color
+                      width: 2, // border width
+                    ),
+                  ),
+                  borderRadius: BorderRadius.circular(100), // rounded corners
+                ),
+                child: Text(
+                  "Logout",
+                  style: TextStyle(
+                    color: Color.fromARGB(255, 0, 0, 0),
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ),
             ),
         ],

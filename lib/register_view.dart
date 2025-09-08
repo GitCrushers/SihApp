@@ -11,7 +11,6 @@ class SignUpPage extends StatefulWidget {
 
 class _SignUpPageState extends State<SignUpPage> {
   late final TextEditingController _usernameController;
-  late final TextEditingController _fullnameController;
   late final TextEditingController _emailController;
   late final TextEditingController _passwordController;
 
@@ -43,7 +42,7 @@ class _SignUpPageState extends State<SignUpPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Icon(Icons.flutter_dash, color: Colors.green, size: 64),
+                Image.asset("assets/icon.png", height: 100),
                 const SizedBox(height: 12),
                 const Text(
                   "Gridly",

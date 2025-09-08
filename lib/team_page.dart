@@ -1,72 +1,66 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:gridly2/home_page.dart';
 
-// Team Page
 class TeamPage extends StatelessWidget {
   const TeamPage({super.key});
 
+  final List<Map<String, String>> members = const [
+    {"name": "1", "role": "Member", "image": "assets/1.png"},
+    {"name": "2", "role": "Member", "image": "assets/2.jpg"},
+    {"name": "3", "role": "Member", "image": "assets/3.jpg"},
+    {"name": "4", "role": "Member", "image": "assets/4.png"},
+    {"name": "5", "role": "Member", "image": "assets/5.png"},
+    {"name": "6", "role": "Member", "image": "assets/6.png"},
+  ];
+
   @override
   Widget build(BuildContext context) {
-    final members = [
-      {"name": "Ava Reed", "initials": "AR"},
-      {"name": "Noah Chen", "initials": "NC"},
-      {"name": "Mia Patel", "initials": "MP"},
-      {"name": "Leo Park", "initials": "LP"},
-      {"name": "Zoe Kim", "initials": "ZK"},
-      {"name": "Omar Ali", "initials": "OA"},
-    ];
-
-    return Padding(
-      padding: const EdgeInsets.all(16),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Text(
-            "Team",
-            style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-          ),
-          const SizedBox(height: 20),
-          Expanded(
-            child: GridView.builder(
-              itemCount: members.length,
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 3,
-                mainAxisSpacing: 16,
-                crossAxisSpacing: 16,
-                childAspectRatio: 0.9,
-              ),
-              itemBuilder: (context, index) {
-                final member = members[index];
-                return Column(
-                  children: [
-                    CircleAvatar(
-                      radius: 30,
-                      backgroundColor: Colors.green.shade100,
-                      child: Text(
-                        member["initials"]!,
-                        style: const TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 8),
-                    Text(
-                      member["name"]!,
-                      style: const TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    const Text(
-                      "Member",
-                      style: TextStyle(color: Colors.grey, fontSize: 12),
-                    ),
-                  ],
-                );
-              },
+    return Column(
+      children: [
+        const Padding(
+          padding: EdgeInsets.all(16.0),
+          child: Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              "Team",
+              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
             ),
           ),
-        ],
-      ),
+        ),
+        Expanded(
+          // 👇 ensures grid fills the remaining space above bottom nav
+          child: GridView.builder(
+            padding: const EdgeInsets.all(16),
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2, // 2 per row
+              crossAxisSpacing: 20,
+              mainAxisSpacing: 1,
+              childAspectRatio: 1,
+            ),
+            itemCount: members.length,
+            itemBuilder: (context, index) {
+              final member = members[index];
+              return Column(
+                children: [
+                  CircleAvatar(
+                    radius: 35,
+                    backgroundImage: AssetImage(member["image"]!),
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    member["name"]!,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  Text(
+                    member["role"]!,
+                    style: const TextStyle(color: Colors.grey),
+                  ),
+                ],
+              );
+            },
+          ),
+        ),
+      ],
     );
   }
 }
