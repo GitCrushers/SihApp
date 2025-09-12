@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:gridly2/dashboard_page.dart';
+import 'package:gridly2/surveillance_page.dart';
 import 'package:gridly2/team_page.dart';
 import 'register_view.dart'; // your existing register page
 
@@ -81,7 +82,18 @@ class _HomePageState extends State<HomePage> {
             ),
         ],
       ),
-      body: pages[_selectedIndex],
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Color(0xFFDDE7DA), Color(0xFFBFD8B8)],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ),
+        ),
+        child: pages[_selectedIndex],
+      ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         currentIndex: _selectedIndex,
@@ -124,7 +136,7 @@ class _HomePageState extends State<HomePage> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            "Hola $displayName!",
+            "Hey! $displayName!",
             style: const TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 10),

@@ -65,14 +65,6 @@ class TeamPage extends StatelessWidget {
   }
 }
 
-class SurveillancePage extends StatelessWidget {
-  const SurveillancePage({super.key});
-  @override
-  Widget build(BuildContext context) {
-    return const Center(child: Text("Surveillance Page"));
-  }
-}
-
 // Notifications Page
 class NotificationsPage extends StatelessWidget {
   const NotificationsPage({super.key});

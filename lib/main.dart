@@ -19,7 +19,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Gridly',
-      theme: ThemeData(primarySwatch: Colors.green),
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: const Color.fromARGB(255, 72, 0, 255),
+        ),
+      ),
       home: const HomePage(),
       routes: {
         '/home/': (context) => const HomePage(),
